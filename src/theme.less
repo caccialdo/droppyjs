@@ -1,0 +1,47 @@
+.droppy-container {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  label {
+    padding: 5px 8px;
+  }
+  > label {
+    position: relative;
+    padding-right: 18px;
+    border: 1px solid silver;
+    border-radius: 2px;
+    background: white;
+    &:after {
+      position: absolute;
+      top: 9px;
+      right: 7px;
+      content: "▲";
+      font-size: 7px;
+    }
+  }
+  > input:not(:checked) {
+    + label:after {
+      content: "▼";
+    }
+    ~ * > .droppy-drop {
+      margin: 0;
+      border: none;
+    }
+  }
+  .droppy-drop {
+    border-radius: 2px;
+    border: 1px solid silver;
+    margin-top: 4px;
+    background: white;
+    input[type=text] {
+      padding: 5px 5px 1px 5px;
+      border-bottom: 1px solid silver;
+      margin-bottom: 4px;
+    }
+    > input[type=radio][name^=selected]:checked + * + label {
+      box-shadow: inset -4px 0 0 darkorchid;
+    }
+    > input[type=radio][name^=hovered]:checked + label {
+      background: ghostwhite;
+    }
+  }
+}

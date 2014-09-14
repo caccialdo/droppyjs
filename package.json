@@ -1,0 +1,22 @@
+{
+  "name": "droppy-js",
+  "version": "0.5.0",
+  "description": "A lightweight widget to replace native select elements.",
+  "keywords": [
+    "dropdown",
+    "lightweight"
+  ],
+  "author": {
+    "name": "Arnaud Ceccaldi",
+    "url": "https://github.com/caccialdo"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "less": "1.7.5",
+    "uglify-js": "2.4.15",
+    "watchy": "0.5.3"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/watchy -w src -- '/bin/bash build.sh'"
+  }
+}

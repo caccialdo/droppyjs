@@ -19,10 +19,12 @@ You only need to add **3 elements** to the HTML document to get yourself started
   ```html
   <script src="path/to/droppy.min.js"></script>
   ```
+
 1. a Droppy CSS theme:
   ```html
   <link rel="stylesheet" href="path/to/theme.css"/>
   ```
+
 1. an initialization script:
   ```js
   var droppy = new Droppy({

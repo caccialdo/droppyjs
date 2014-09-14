@@ -11,6 +11,9 @@ The lightest & fastest way to convert a native *non-multiple* `<select>` element
 * **no listeners set up at body level:** while other dropdown widget libraries rely on them to close any opened dropdown when the user clicks outside of it, Droppy uses a clever `blur` event instead. Say goodbye to body-level event pollution.
 * **.destroy() method:** need to get rid of a droppy? Droppy will get out of your way in the cleanest possible way.
 
+## Demo
+Check it out [here](http://caccialdo.github.io/droppy-js/demo.html).
+
 ## How to install? As easy as 1...2...3
 
 You only need to add **3 elements** to the HTML document to get yourself started:

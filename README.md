@@ -63,7 +63,6 @@ Your final HTMLcode should look like that:
 ```
 
 ## Droppy's options
-
 When creating a new droppy, some options can be passed to the constructor. These options include:
 
 | Name         | Type        | Description                                            | Default value | Required |
@@ -72,7 +71,6 @@ When creating a new droppy, some options can be passed to the constructor. These
 | **maxWidth** | integer     | The maximum width in pixels for the dropdown's header. | 250           | N        |
 
 ## DIY Droppy
-
 To build Droppy yourself, make you have Node.js and NPM working. Then, `git clone` this repository and:
 
 ```sh
@@ -84,5 +82,4 @@ npm start
 Edit the files in the `src` directory and new assets will be automatically created in the `build` directory.
 
 ## Contribute
-
 **Fork**, create a **Pull Request** and we'll review, discuss and merge it -- provided it's true to Droppy.js spirit :-D.

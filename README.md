@@ -69,7 +69,7 @@ Your final HTMLcode should look like that:
 ```
 
 ## Droppy's options
-When creating a new droppy, some options can be passed to the constructor as its second argument. These options include:
+When creating a new droppy, an configuration object can be passed to the constructor as a second argument. Supported options include:
 
 | Name | Type | Description | Default value |
 |------|------|-------------|---------------|

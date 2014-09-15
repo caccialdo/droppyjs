@@ -17,6 +17,7 @@
     "watchy": "0.5.3"
   },
   "scripts": {
-    "start": "node_modules/.bin/watchy -w src -- '/bin/bash build.sh'"
+    "start": "node_modules/.bin/watchy -w src -- '/bin/bash build.sh'",
+    "gzip-size": "/usr/bin/gzip -c build/droppy.min.js | wc -c"
   }
 }

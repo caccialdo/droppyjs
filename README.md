@@ -19,7 +19,7 @@ The lightest & fastest way to convert a native *non-multiple* `<select>` element
 * No right-to-left text direction support.
 
 ## Demo & sandbox
-Check out the live demo [here](http://caccialdo.github.io/droppy-js/demo.html).  
+Check out the live demo [here](http://caccialdo.github.io/droppy-js/demo).  
 If you feel ready to tweak the styling and create your own Droppy theme use the sandbox [here](http://codepen.io/caccialdo/pen/zrIxe/?editors=010). Don't hesitate to share your theme with us. We'd love to create a gallery of them.
 
 ## How to install? As easy as 1...2...3

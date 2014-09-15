@@ -1,6 +1,6 @@
 <img src="http://i1131.photobucket.com/albums/m542/swolf318/Miscellaneous/DroopyCartoonVector2-500x500_zps577024c8.jpg" height="150"/>
 
-# Droppy.js
+# Dro(o)ppy.js
 
 The lightest & fastest way to convert a native *non-multiple* `<select>` element to a customizable widget.
 
@@ -75,6 +75,13 @@ When creating a new droppy, an configuration object can be passed to the constru
 |------|------|-------------|---------------|
 | **maxWidth** | integer | The maximum width in pixels for the dropdown's header. | `150` |
 | **theme** | string | The name of the theme you would like to use. The widget container will have a class of the same name. | `"default"` |
+
+For e.g. the code needed to setup a customized Droppy with the [darcula](http://ethanschoonover.com/solarized) theme would be:
+```js
+var droppy = new Droppy(select, {
+    theme: "darcula"
+});
+```
 
 ## DIY Droppy
 To build Droppy yourself, make you have Node.js and NPM working. Then, `git clone` this repository and:

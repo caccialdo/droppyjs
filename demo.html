@@ -42,9 +42,7 @@
         droppies = [];
 
     Array.prototype.forEach.call(selects, function (select) {
-        droppies.push(new Droppy({
-            select: select
-        }));
+        droppies.push(new Droppy(select));
     });
 </script>
 <!-- Google Analytics -->

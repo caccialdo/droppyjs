@@ -11,9 +11,11 @@ function bindEvent(node, type, handler, context) {
     }
 }
 
-var Droppy = function Droppy (cfg) {
-    if (!cfg.select) throw new Error("You need to provide a select element to the constructor.");
-    this.select = cfg.select;
+var Droppy = function Droppy (select, cfg) {
+    if (!select) throw new Error("You need to provide a select element to the constructor.");
+    this.select = select;
+
+    cfg = cfg || {};
 
     if (!style) {
         style = document.createElement("style");

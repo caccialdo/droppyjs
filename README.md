@@ -24,20 +24,20 @@ Check it out [here](http://caccialdo.github.io/droppy-js/demo.html).
 You only need to add **3 elements** to the HTML document to get yourself started:
 
 1. Droppy's core logic:
-   ```html
-   <script src="path/to/droppy.min.js"></script>
-   ```
+  ```html
+  <script src="path/to/droppy.min.js"></script>
+  ```
 
 1. a Droppy CSS theme:
-   ```html
-   <link rel="stylesheet" href="path/to/theme.css"/>
-   ```
+  ```html
+  <link rel="stylesheet" href="path/to/theme.css"/>
+  ```
 
 1. an initialization script:
-   ```js
-   var select = document.querySelector("#my-select"),
-       droppy = new Droppy(select);
-   ```
+  ```js
+  var select = document.querySelector("#my-select"),
+      droppy = new Droppy(select);
+  ```
 
 Your final HTMLcode should look like that:
 

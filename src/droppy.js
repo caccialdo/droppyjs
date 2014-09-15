@@ -5,6 +5,7 @@ var count = 0,
 
 var Droppy = function Droppy (select, cfg) {
     if (!select) throw new Error("You need to provide a select element to the constructor.");
+    if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
     this.select = select;
 
     cfg = cfg || {};

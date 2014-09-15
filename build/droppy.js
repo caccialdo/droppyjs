@@ -7,9 +7,14 @@
             detach: node.removeEventListener.bind(node, type, handler)
         };
     }
+    function browserIsNotSupported(navigator) {
+        var isIE = navigator.appName === "Microsoft Internet Explorer" && document.documentMode < 9, isIOS = /iP(od|hone)/i.test(navigator.userAgent), isAndroid = /Android/i.test(navigator.userAgent);
+        return isIE || isIOS || isAndroid;
+    }
     var count = 0, indexOf = Array.prototype.indexOf, DEFAULT_MAX_WIDTH = 150, style;
     var Droppy = function Droppy(select, cfg) {
         if (!select) throw new Error("You need to provide a select element to the constructor.");
+        if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
         this.select = select;
         cfg = cfg || {};
         if (!style) {

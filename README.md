@@ -1,4 +1,4 @@
-<img src="http://i1131.photobucket.com/albums/m542/swolf318/Miscellaneous/DroopyCartoonVector2-500x500_zps577024c8.jpg" style="height:150px;"/>
+<img src="http://i1131.photobucket.com/albums/m542/swolf318/Miscellaneous/DroopyCartoonVector2-500x500_zps577024c8.jpg" height="150"/>
 
 # Droppy.js
 

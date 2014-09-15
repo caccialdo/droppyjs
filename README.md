@@ -1,3 +1,5 @@
+<img src="http://i1131.photobucket.com/albums/m542/swolf318/Miscellaneous/DroopyCartoonVector2-500x500_zps577024c8.jpg" style="height:150px;"/>
+
 # Droppy.js
 
 The lightest & fastest way to convert a native *non-multiple* `<select>` element to a customizable widget.
@@ -70,7 +72,7 @@ When creating a new droppy, some options can be passed to the constructor as its
 
 | Name         | Type        | Description                                            | Default value | Optional |
 |--------------|-------------|--------------------------------------------------------|---------------|:--------:|
-| **maxWidth** | integer     | The maximum width in pixels for the dropdown's header. | 250           | Y        |
+| **maxWidth** | integer     | The maximum width in pixels for the dropdown's header. | 150           | Y        |
 
 ## DIY Droppy
 To build Droppy yourself, make you have Node.js and NPM working. Then, `git clone` this repository and:

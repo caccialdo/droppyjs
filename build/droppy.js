@@ -23,8 +23,9 @@
         if (!select) throw new Error("You need to provide a select element to the constructor.");
         if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
         this.select = select;
-        cfg = shallowMerge({
-            maxWidth: 150
+        cfg = this.cfg = shallowMerge({
+            maxWidth: 150,
+            theme: "default"
         }, cfg || {});
         if (!style) {
             style = document.createElement("style");
@@ -49,7 +50,7 @@
     DroppyPrototype.render = function() {
         var markup, defaultName, i, label, checked, options = this.select.querySelectorAll("option");
         this.container = document.createElement("span");
-        this.container.className = "droppy-container";
+        this.container.className = "droppy-container " + this.cfg.theme;
         defaultName = this.select.querySelector("option:checked").innerHTML;
         markup = "" + '<input id="droppy-' + count + '" class="droppy-hidden" type="checkbox"/>' + '<label for="droppy-' + count + '">' + defaultName + "</label>" + "<div>" + '<div class="droppy-drop">' + '<input type="text" placeholder="type to filter"/>';
         for (i = 0; i < options.length; i++) {

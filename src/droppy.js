@@ -61,7 +61,7 @@ DroppyPrototype.render = function () {
         markup += '' +
             '<input type="radio" name="selected-' + count + '" class="droppy-hidden"' + checked + '/>' +
             '<input type="radio" name="hovered-' + count + '" class="droppy-hidden" data-value="' + label.toLowerCase() + '"' + checked + '/>' +
-            '<label for="droppy-' + count + '" data-value="' + label.toLowerCase() + '" title="' + label + '">' + label + '</label>';
+            '<label for="droppy-' + count + '" data-index="' + i + '" data-value="' + label.toLowerCase() + '" title="' + label + '">' + label + '</label>';
     }
 
     markup += '</div></div>';
@@ -99,7 +99,9 @@ DroppyPrototype.onLabelClick = function () {
 };
 
 DroppyPrototype.onOptionClick = function (e) {
-    this.label.innerHTML = e.target.innerHTML;
+    var index = e.target.getAttribute("data-index");
+    this.select.selectedIndex = parseInt(index, 10);
+    this.label.innerHTML = e.target.getAttribute("title");
     e.target.previousElementSibling.previousElementSibling.checked = true;
     this.unFilter();
 };

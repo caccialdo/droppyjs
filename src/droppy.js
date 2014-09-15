@@ -3,14 +3,6 @@ var count = 0,
     DEFAULT_MAX_WIDTH = 150,
     style;
 
-function bindEvent(node, type, handler, context) {
-    if (context) handler = handler.bind(context);
-    node.addEventListener(type, handler);
-    return {
-        detach: node.removeEventListener.bind(node, type, handler)
-    }
-}
-
 var Droppy = function Droppy (select, cfg) {
     if (!select) throw new Error("You need to provide a select element to the constructor.");
     this.select = select;

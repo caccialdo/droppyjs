@@ -23,8 +23,8 @@ DROPPY_MIN_CSS=$(cat "build/droppy.min.css")
 sed -e "s/{{droppy\.min\.css}}/${DROPPY_MIN_CSS}/g" "src/droppy.js" > "build/droppy.tmp.js"
 
 # Minifies JS assets
-$UGLIFY "build/droppy.tmp.js" --enclose --preamble "/* $LICENSE */" --beautify > "build/droppy.js"
-$UGLIFY "build/droppy.tmp.js" --enclose --preamble "/* $LICENSE */" --compress --mangle --screw-ie8 > "build/droppy.min.js"
+$UGLIFY "src/utils.js" "build/droppy.tmp.js" --enclose --preamble "/* $LICENSE */" --beautify > "build/droppy.js"
+$UGLIFY "src/utils.js" "build/droppy.tmp.js" --enclose --preamble "/* $LICENSE */" --compress --mangle --screw-ie8 > "build/droppy.min.js"
 
 # Cleanup build folder
 rm "build/droppy.tmp.js" "build/droppy.min.css"

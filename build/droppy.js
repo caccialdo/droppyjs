@@ -1,6 +1,5 @@
 /* Droppy v0.5.0 | (c) 2014 by Arnaud Ceccaldi | MIT License */
 (function() {
-    var count = 0, indexOf = Array.prototype.indexOf, DEFAULT_MAX_WIDTH = 150, style;
     function bindEvent(node, type, handler, context) {
         if (context) handler = handler.bind(context);
         node.addEventListener(type, handler);
@@ -8,6 +7,7 @@
             detach: node.removeEventListener.bind(node, type, handler)
         };
     }
+    var count = 0, indexOf = Array.prototype.indexOf, DEFAULT_MAX_WIDTH = 150, style;
     var Droppy = function Droppy(select, cfg) {
         if (!select) throw new Error("You need to provide a select element to the constructor.");
         this.select = select;

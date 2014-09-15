@@ -7,8 +7,9 @@ var Droppy = function Droppy (select, cfg) {
     if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
     this.select = select;
 
-    cfg = shallowMerge({
-        maxWidth: 150
+    cfg = this.cfg = shallowMerge({
+        maxWidth: 150,
+        theme: "default"
     }, cfg || {});
 
     if (!style) {
@@ -44,7 +45,7 @@ DroppyPrototype.render = function () {
         options = this.select.querySelectorAll("option");
 
     this.container = document.createElement("span");
-    this.container.className = "droppy-container";
+    this.container.className = "droppy-container " + this.cfg.theme;
 
     defaultName = this.select.querySelector("option:checked").innerHTML;
     markup = '' +

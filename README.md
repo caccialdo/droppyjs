@@ -71,9 +71,10 @@ Your final HTMLcode should look like that:
 ## Droppy's options
 When creating a new droppy, some options can be passed to the constructor as its second argument. These options include:
 
-| Name         | Type        | Description                                            | Default value | Optional |
-|--------------|-------------|--------------------------------------------------------|---------------|:--------:|
-| **maxWidth** | integer     | The maximum width in pixels for the dropdown's header. | 150           | Y        |
+| Name | Type | Description | Default value |
+|------|------|-------------|---------------|
+| **maxWidth** | integer | The maximum width in pixels for the dropdown's header. | `150` |
+| **theme** | string | The name of the theme you would like to use. The widget container will have a class of the same name. | `"default"` |
 
 ## DIY Droppy
 To build Droppy yourself, make you have Node.js and NPM working. Then, `git clone` this repository and:

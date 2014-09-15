@@ -1,6 +1,5 @@
 var count = 0,
     indexOf = Array.prototype.indexOf,
-    DEFAULT_MAX_WIDTH = 150,
     style;
 
 var Droppy = function Droppy (select, cfg) {
@@ -8,7 +7,9 @@ var Droppy = function Droppy (select, cfg) {
     if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
     this.select = select;
 
-    cfg = cfg || {};
+    cfg = shallowMerge({
+        maxWidth: 150
+    }, cfg || {});
 
     if (!style) {
         style = document.createElement("style");
@@ -28,7 +29,7 @@ var Droppy = function Droppy (select, cfg) {
     this.search = this.drop.querySelector("input[type=text]");
     this.inputs = this.drop.querySelectorAll("input[name^=hovered]");
 
-    this.label.style.maxWidth = (cfg.maxWidth || DEFAULT_MAX_WIDTH) + "px";
+    this.label.style.maxWidth = cfg.maxWidth + "px";
     this.label.style.width = window.getComputedStyle(this.drop).width;
 
     this.bind();

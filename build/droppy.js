@@ -11,12 +11,21 @@
         var isIE = navigator.appName === "Microsoft Internet Explorer" && document.documentMode < 9, isIOS = /iP(od|hone)/i.test(navigator.userAgent), isAndroid = /Android/i.test(navigator.userAgent);
         return isIE || isIOS || isAndroid;
     }
-    var count = 0, indexOf = Array.prototype.indexOf, DEFAULT_MAX_WIDTH = 150, style;
+    function shallowMerge(o1, o2) {
+        var o3 = Object.create(o1), key;
+        for (key in o2) {
+            o3[key] = o2[key];
+        }
+        return o3;
+    }
+    var count = 0, indexOf = Array.prototype.indexOf, style;
     var Droppy = function Droppy(select, cfg) {
         if (!select) throw new Error("You need to provide a select element to the constructor.");
         if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
         this.select = select;
-        cfg = cfg || {};
+        cfg = shallowMerge({
+            maxWidth: 150
+        }, cfg || {});
         if (!style) {
             style = document.createElement("style");
             style.innerHTML = ".droppy-container{display:inline-block;outline:0}.droppy-container *,.droppy-container :before,.droppy-container :after{box-sizing:border-box}.droppy-container label{display:block;cursor:pointer}.droppy-container>label{box-sizing:content-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.droppy-container>input:not(:checked)~*>.droppy-drop{max-height:0}.droppy-container>div{position:relative}.droppy-container .droppy-drop{position:absolute;overflow:hidden;max-height:9999px}.droppy-container .droppy-drop>input[type=text]{width:calc(90%);border:none;outline:0;margin-left:5px}.droppy-hidden{display:none;visibility:hidden}";
@@ -31,7 +40,7 @@
         this.drop = this.container.querySelector(".droppy-drop");
         this.search = this.drop.querySelector("input[type=text]");
         this.inputs = this.drop.querySelectorAll("input[name^=hovered]");
-        this.label.style.maxWidth = (cfg.maxWidth || DEFAULT_MAX_WIDTH) + "px";
+        this.label.style.maxWidth = cfg.maxWidth + "px";
         this.label.style.width = window.getComputedStyle(this.drop).width;
         this.bind();
         return this;

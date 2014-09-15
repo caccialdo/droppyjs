@@ -17,3 +17,13 @@ function browserIsNotSupported (navigator) {
 
     return isIE || isIOS || isAndroid;
 }
+
+function shallowMerge (o1, o2) {
+    var o3 = Object.create(o1),
+        key;
+
+    for (key in o2) {
+        o3[key] = o2[key];
+    }
+    return o3;
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Droppy.js demo</title>
+    <link rel="stylesheet" href="../build/theme.min.css"/>
+    <script src="../build/droppy.min.js"></script>
+    <style>
+        body {
+            background: snow;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h2>Droppy.js demo</h2>
+<select>
+    <option value="JANUARY">January</option>
+    <option value="FEBRUARY">February</option>
+    <option value="MARCH">March</option>
+    <option value="APRIL">April</option>
+    <option value="MAY" selected>May</option>
+    <option value="JUNE">June</option>
+    <option value="JULY">July</option>
+    <option value="AUGUST">August</option>
+    <option value="SEPTEMBER">September</option>
+    <option value="OCTOBER">October</option>
+    <option value="NOVEMBER">November</option>
+    <option value="DECEMBER">December</option>
+</select>
+<select>
+    <option value="MONDAY">Monday</option>
+    <option value="TUESDAY">Tuesday</option>
+    <option value="WEDNESDAY">Wednesday</option>
+    <option value="THURSDAY">Thursday</option>
+    <option value="FRIDAY" selected>Friday</option>
+    <option value="SATURDAY">Saturday</option>
+    <option value="SUNDAY">Sunday</option>
+</select>
+<script>
+    var selects = document.querySelectorAll("select"),
+        droppies = [];
+
+    Array.prototype.forEach.call(selects, function (select) {
+        droppies.push(new Droppy(select));
+    });
+</script>
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-54796432-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

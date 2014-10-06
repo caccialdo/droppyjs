@@ -5,7 +5,6 @@
     padding: 5px 8px;
   }
   > label {
-    position: relative;
     padding-right: 18px;
     border: 1px solid silver;
     border-radius: 2px;
@@ -16,9 +15,9 @@
     -o-transition: border 0.1s;
     transition: border 0.1s;
     &:after {
-      position: absolute;
-      top: 9px;
-      right: 7px;
+      float: right;
+      margin-top: 3px;
+      margin-right: -10px;
       content: "▲";
       font-size: 7px;
       -webkit-transition: all 0.3s;

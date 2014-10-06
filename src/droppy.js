@@ -41,7 +41,8 @@ var Droppy = function Droppy (select, cfg) {
 var DroppyPrototype = Droppy.prototype;
 
 DroppyPrototype.render = function () {
-    var markup, defaultName, i, label, checked,
+    var markup, defaultName, i, label, checked, parent,
+        groups = [],
         options = this.select.querySelectorAll("option");
 
     this.container = document.createElement("span");
@@ -58,6 +59,12 @@ DroppyPrototype.render = function () {
     for (i = 0; i < options.length; i++) {
         label = options[i].innerHTML;
         checked = options[i].selected ? " checked" : "";
+        parent = options[i].parentNode;
+
+        if (parent.nodeName === "OPTGROUP" && groups.indexOf(parent) < 0 && parent.label) {
+            groups.push(parent);
+            markup += '<div>' + parent.label + '</div>';
+        }
 
         markup += '' +
             '<input type="radio" name="selected-' + count + '" class="droppy-hidden"' + checked + '/>' +
@@ -73,12 +80,14 @@ DroppyPrototype.render = function () {
 };
 
 DroppyPrototype.bind = function () {
+    var container = this.container;
+
     this.handles = [
-        bindEvent(this.container, "mousedown", this.onMouseDown, this),
-        bindEvent(this.container, "click", this.onClick, this),
-        bindEvent(this.container, "keydown", this.onKeyDown, this),
-        bindEvent(this.container, "keyup", this.onKeyUp, this),
-        bindEvent(this.container, "mouseover", this.onMouseOver, this),
+        bindEvent(container, "mousedown", this.onMouseDown, this),
+        bindEvent(container, "click", this.onClick, this),
+        bindEvent(container, "keydown", this.onKeyDown, this),
+        bindEvent(container, "keyup", this.onKeyUp, this),
+        bindEvent(container, "mouseover", this.onMouseOver, this),
         bindEvent(this.search, "blur", this.onBlur, this)
     ];
 };
@@ -88,9 +97,11 @@ DroppyPrototype.onMouseDown = function () {
 };
 
 DroppyPrototype.onClick = function (e) {
-    if (e.target === this.label) {
+    var target = e.target;
+
+    if (target === this.label) {
         this.onLabelClick(e);
-    } else if (this.drop.contains(e.target) && e.target !== this.drop && e.target !== this.search) {
+    } else if (this.drop.contains(target) && target !== this.drop && target !== this.search && target.nodeName !== "DIV") {
         this.onOptionClick(e);
     }
 };

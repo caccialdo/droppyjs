@@ -10,35 +10,85 @@
             background: snow;
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         }
+        td {
+            min-width: 250px;
+        }
     </style>
 </head>
 <body>
 <h2>Droppy.js demo</h2>
-<select>
-    <option value="JANUARY">January</option>
-    <option value="FEBRUARY">February</option>
-    <option value="MARCH">March</option>
-    <option value="APRIL">April</option>
-    <option value="MAY" selected>May</option>
-    <option value="JUNE">June</option>
-    <option value="JULY">July</option>
-    <option value="AUGUST">August</option>
-    <option value="SEPTEMBER">September</option>
-    <option value="OCTOBER">October</option>
-    <option value="NOVEMBER">November</option>
-    <option value="DECEMBER">December</option>
-</select>
-<select>
-    <option value="MONDAY">Monday</option>
-    <option value="TUESDAY">Tuesday</option>
-    <option value="WEDNESDAY">Wednesday</option>
-    <option value="THURSDAY">Thursday</option>
-    <option value="FRIDAY" selected>Friday</option>
-    <option value="SATURDAY">Saturday</option>
-    <option value="SUNDAY">Sunday</option>
-</select>
+<table>
+    <thead>
+    <tr>
+        <td>Transform this...</td>
+        <td>...into that!</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <select>
+                <option value="JANUARY">January</option>
+                <option value="FEBRUARY">February</option>
+                <option value="MARCH">March</option>
+                <option value="APRIL">April</option>
+                <option value="MAY" selected>May</option>
+                <option value="JUNE">June</option>
+                <option value="JULY">July</option>
+                <option value="AUGUST">August</option>
+                <option value="SEPTEMBER">September</option>
+                <option value="OCTOBER">October</option>
+                <option value="NOVEMBER">November</option>
+                <option value="DECEMBER">December</option>
+            </select>
+        </td>
+        <td>
+            <select class="droppy">
+                <option value="JANUARY">January</option>
+                <option value="FEBRUARY">February</option>
+                <option value="MARCH">March</option>
+                <option value="APRIL">April</option>
+                <option value="MAY" selected>May</option>
+                <option value="JUNE">June</option>
+                <option value="JULY">July</option>
+                <option value="AUGUST">August</option>
+                <option value="SEPTEMBER">September</option>
+                <option value="OCTOBER">October</option>
+                <option value="NOVEMBER">November</option>
+                <option value="DECEMBER">December</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <select>
+                <option value="MONDAY">Monday</option>
+                <option value="TUESDAY">Tuesday</option>
+                <option value="WEDNESDAY">Wednesday</option>
+                <option value="THURSDAY">Thursday</option>
+                <option value="FRIDAY" selected>Friday</option>
+                <option value="SATURDAY">Saturday</option>
+                <option value="SUNDAY">Sunday</option>
+            </select>
+        </td>
+        <td>
+            <select class="droppy">
+                <option value="MONDAY">Monday</option>
+                <option value="TUESDAY">Tuesday</option>
+                <option value="WEDNESDAY">Wednesday</option>
+                <option value="THURSDAY">Thursday</option>
+                <option value="FRIDAY" selected>Friday</option>
+                <option value="SATURDAY">Saturday</option>
+                <option value="SUNDAY">Sunday</option>
+            </select>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
 <script>
-    var selects = document.querySelectorAll("select"),
+    var selects = document.querySelectorAll("select.droppy"),
         droppies = [];
 
     Array.prototype.forEach.call(selects, function (select) {

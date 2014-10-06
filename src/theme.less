@@ -14,7 +14,7 @@
     -ms-transition: border 0.1s;
     -o-transition: border 0.1s;
     transition: border 0.1s;
-    &:after {
+    &:before {
       float: right;
       margin-top: 3px;
       margin-right: -10px;
@@ -33,7 +33,7 @@
     }
   }
   > input:checked {
-    + label:after {
+    + label:before {
       -webkit-transform: rotate(180deg);
       -moz-transform: rotate(180deg);
       -ms-transform: rotate(180deg);

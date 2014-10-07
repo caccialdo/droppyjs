@@ -29,7 +29,7 @@
         }, cfg || {});
         if (!style) {
             style = document.createElement("style");
-            style.innerHTML = ".droppy-container{display:inline-block;outline:0}.droppy-container *,.droppy-container :before,.droppy-container :after{box-sizing:border-box}.droppy-container label{display:block;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.droppy-container>label{box-sizing:content-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.droppy-container>input:not(:checked)~*>.droppy-drop{max-height:0}.droppy-container>div{position:relative}.droppy-container .droppy-drop{position:absolute;overflow:hidden;max-height:9999px}.droppy-container .droppy-drop>input[type=text]{width:calc(90%);border:none;outline:0;margin-left:5px}.droppy-hidden{display:none;visibility:hidden}";
+            style.innerHTML = ".droppy-container{display:inline-block;outline:0}.droppy-container *,.droppy-container :before,.droppy-container :after{box-sizing:border-box}.droppy-container label{display:block;cursor:pointer}.droppy-container>label{box-sizing:content-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.droppy-container>input:not(:checked)~*>.droppy-drop{max-height:0}.droppy-container>div{position:relative}.droppy-container .droppy-drop{position:absolute;overflow:hidden;max-height:9999px}.droppy-container .droppy-drop>input[type=text]{width:calc(90%);border:none;outline:0;margin-left:5px}.droppy-container .droppy-drop>div{cursor:default}.droppy-hidden{display:none;visibility:hidden}";
             document.head.insertBefore(style, document.head.firstElementChild);
         }
         this.render();
@@ -48,7 +48,7 @@
     };
     var DroppyPrototype = Droppy.prototype;
     DroppyPrototype.render = function() {
-        var markup, defaultName, i, label, checked, options = this.select.querySelectorAll("option");
+        var markup, defaultName, i, label, checked, parent, groups = [], options = this.select.querySelectorAll("option");
         this.container = document.createElement("span");
         this.container.className = "droppy-container " + this.cfg.theme;
         defaultName = this.select.querySelector("option:checked").innerHTML;
@@ -56,6 +56,11 @@
         for (i = 0; i < options.length; i++) {
             label = options[i].innerHTML;
             checked = options[i].selected ? " checked" : "";
+            parent = options[i].parentNode;
+            if (parent.nodeName === "OPTGROUP" && groups.indexOf(parent) < 0 && parent.label) {
+                groups.push(parent);
+                markup += "<div>" + parent.label + "</div>";
+            }
             markup += "" + '<input type="radio" name="selected-' + count + '" class="droppy-hidden"' + checked + "/>" + '<input type="radio" name="hovered-' + count + '" class="droppy-hidden" data-value="' + label.toLowerCase() + '"' + checked + "/>" + '<label for="droppy-' + count + '" data-index="' + i + '" data-value="' + label.toLowerCase() + '" title="' + label + '">' + label + "</label>";
         }
         markup += "</div></div>";
@@ -64,15 +69,17 @@
         this.select.classList.add("droppy-hidden");
     };
     DroppyPrototype.bind = function() {
-        this.handles = [ bindEvent(this.container, "mousedown", this.onMouseDown, this), bindEvent(this.container, "click", this.onClick, this), bindEvent(this.container, "keydown", this.onKeyDown, this), bindEvent(this.container, "keyup", this.onKeyUp, this), bindEvent(this.container, "mouseover", this.onMouseOver, this), bindEvent(this.search, "blur", this.onBlur, this) ];
+        var container = this.container;
+        this.handles = [ bindEvent(container, "mousedown", this.onMouseDown, this), bindEvent(container, "click", this.onClick, this), bindEvent(container, "keydown", this.onKeyDown, this), bindEvent(container, "keyup", this.onKeyUp, this), bindEvent(container, "mouseover", this.onMouseOver, this), bindEvent(this.search, "blur", this.onBlur, this) ];
     };
     DroppyPrototype.onMouseDown = function() {
         this.cancelBlur = this.checkbox.checked;
     };
     DroppyPrototype.onClick = function(e) {
-        if (e.target === this.label) {
+        var target = e.target;
+        if (target === this.label) {
             this.onLabelClick(e);
-        } else if (this.drop.contains(e.target) && e.target !== this.drop && e.target !== this.search) {
+        } else if (this.drop.contains(target) && target !== this.drop && target !== this.search && target.nodeName !== "DIV") {
             this.onOptionClick(e);
         }
     };

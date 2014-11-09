@@ -9,7 +9,8 @@ var Droppy = function Droppy (select, cfg) {
 
     cfg = this.cfg = shallowMerge({
         maxWidth: 150,
-        theme: "default"
+        theme: "default",
+        searchBox: true
     }, cfg || {});
 
     if (!style) {
@@ -47,6 +48,7 @@ DroppyPrototype.render = function () {
 
     this.container = document.createElement("span");
     this.container.className = "droppy-container " + this.cfg.theme;
+    if (!this.cfg.searchBox) this.container.className += " droppy-nosearch";
 
     defaultName = this.select.querySelector("option:checked").innerHTML;
     markup = '' +
@@ -123,7 +125,6 @@ DroppyPrototype.onKeyDown = function (e) {
         this.checkbox.checked = false;
         this.unFilter();
     } else if (e.keyCode === 38) { // Up
-        e.preventDefault();
         this.keyNav(-1);
     } else if (e.keyCode === 40) { // Down
         this.keyNav(1);
@@ -134,6 +135,7 @@ DroppyPrototype.onKeyDown = function (e) {
 };
 
 DroppyPrototype.onKeyUp = function (e) {
+    if (!this.cfg.searchBox) return;
     this.filter(e.target.value);
 };
 

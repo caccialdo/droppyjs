@@ -19,7 +19,7 @@ The lightest & fastest way to convert a native *non-multiple* `<select>` element
 * No right-to-left text direction support.
 
 ## Demo & sandbox
-Check out the live demo [here](http://caccialdo.github.io/droppyjs/demo).  
+Check out the live demo [here](http://caccialdo.github.io/droppyjs/demo).
 If you feel ready to tweak the styling and create your own Droppy theme use the sandbox [here](http://codepen.io/caccialdo/pen/zrIxe/?editors=010). Don't hesitate to share your theme with us. We'd love to create a gallery of them.
 
 ## How to install? As easy as 1...2...3
@@ -74,6 +74,7 @@ When creating a new droppy, an configuration object can be passed to the constru
 | Name | Type | Description | Default value |
 |------|------|-------------|---------------|
 | **maxWidth** | integer | The maximum width in pixels for the dropdown's header. | `150` |
+| **searchBox** | boolean | Whether or not to display the search box in the dropdown. | `true` |
 | **theme** | string | The name of the theme you would like to use. The widget container will have a class of the same name. | `"default"` |
 
 For e.g. the code needed to setup a customized Droppy with the [darcula](http://ethanschoonover.com/solarized) theme would be:

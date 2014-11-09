@@ -148,7 +148,10 @@
         droppies = [];
 
     Array.prototype.forEach.call(selects, function (select) {
-        droppies.push(new Droppy(select));
+        var cfg = {
+            searchBox: select.querySelectorAll("option").length >= 10
+        };
+        droppies.push(new Droppy(select, cfg));
     });
 </script>
 <!-- Google Analytics -->

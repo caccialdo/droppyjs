@@ -25,7 +25,8 @@
         this.select = select;
         cfg = this.cfg = shallowMerge({
             maxWidth: 150,
-            theme: "default"
+            theme: "default",
+            searchBox: true
         }, cfg || {});
         if (!style) {
             style = document.createElement("style");
@@ -51,6 +52,7 @@
         var markup, defaultName, i, label, checked, parent, groups = [], options = this.select.querySelectorAll("option");
         this.container = document.createElement("span");
         this.container.className = "droppy-container " + this.cfg.theme;
+        if (!this.cfg.searchBox) this.container.className += " droppy-nosearch";
         defaultName = this.select.querySelector("option:checked").innerHTML;
         markup = "" + '<input id="droppy-' + count + '" class="droppy-hidden" type="checkbox"/>' + '<label for="droppy-' + count + '">' + defaultName + "</label>" + "<div>" + '<div class="droppy-drop">' + '<input type="text" placeholder="type to filter"/>';
         for (i = 0; i < options.length; i++) {
@@ -98,7 +100,6 @@
             this.checkbox.checked = false;
             this.unFilter();
         } else if (e.keyCode === 38) {
-            e.preventDefault();
             this.keyNav(-1);
         } else if (e.keyCode === 40) {
             this.keyNav(1);
@@ -110,6 +111,7 @@
         }
     };
     DroppyPrototype.onKeyUp = function(e) {
+        if (!this.cfg.searchBox) return;
         this.filter(e.target.value);
     };
     DroppyPrototype.onMouseOver = function(e) {

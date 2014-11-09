@@ -100,8 +100,10 @@
             this.checkbox.checked = false;
             this.unFilter();
         } else if (e.keyCode === 38) {
+            e.preventDefault();
             this.keyNav(-1);
         } else if (e.keyCode === 40) {
+            e.preventDefault();
             this.keyNav(1);
         } else if (e.keyCode === 13) {
             this.checkbox.checked = false;

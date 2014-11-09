@@ -124,9 +124,11 @@ DroppyPrototype.onKeyDown = function (e) {
     if (e.keyCode === 27) { // Esc
         this.checkbox.checked = false;
         this.unFilter();
-    } else if (e.keyCode === 38) { // Up
+    } else if (e.keyCode === 38) { // Up | preventDefault to avoid going to line start
+        e.preventDefault();
         this.keyNav(-1);
-    } else if (e.keyCode === 40) { // Down
+    } else if (e.keyCode === 40) { // Down | preventDefault to avoid going to line end
+        e.preventDefault();
         this.keyNav(1);
     } else if (e.keyCode === 13) { // Enter
         this.checkbox.checked = false;

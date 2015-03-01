@@ -1,33 +1,38 @@
 .droppy-container {
-  & *, & *:before, & *:after {
-    box-sizing: border-box;
-  }
   display: inline-block;
   position: relative;
   outline: none;
+
   label {
     display: block;
     cursor: pointer;
+    white-space: nowrap;
   }
+
   > label {
-    box-sizing: content-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   > input:not(:checked) ~ .droppy-drop {
     max-height: 0;
   }
+
   .droppy-drop {
     position: absolute;
+    top: 100%;
     overflow: hidden;
     max-height: 9999px;
+    z-index: 1000;
+
     > input[type=text] {
-      width: calc(100% - 2 * 5px);
+      width: ~"calc(100% - 10px)";
       border: none;
       outline: none;
       margin-left: 5px;
     }
+
     > div {
       cursor: default;
     }

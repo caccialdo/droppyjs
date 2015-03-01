@@ -1,15 +1,18 @@
 .droppy-container.default {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
+
   label {
     padding: 5px 8px;
   }
+
   > label {
     padding-right: 18px;
     border: 1px solid silver;
     border-radius: 2px;
-    background: white;
+    background: #fff;
     transition: border .1s;
+
     &:before {
       float: right;
       margin-top: 3px;
@@ -20,41 +23,50 @@
       transform-origin: 50% 60% 0;
     }
   }
+
   > input:checked {
     + label:before {
       transform: rotate(180deg);
     }
   }
+
   > input:not(:checked) {
     ~ .droppy-drop {
       margin: 0;
       border: none;
     }
   }
+
   .droppy-drop {
     border-radius: 2px;
     border: 1px solid silver;
     margin-top: 4px;
-    background: white;
+    background: #fff;
+
     input[type=text] {
       padding: 5px 5px 1px 5px;
       border-bottom: 1px solid silver;
       margin-bottom: 4px;
     }
-    > input[type=radio][name^=selected]:checked + * + label {
+
+    input[type=radio][name^=selected]:checked + * + label {
       box-shadow: inset -3px 0 0 plum;
     }
-    > input[type=radio][name^=hovered]:checked + label {
+
+    input[type=radio][name^=hovered]:checked + label {
       background: ghostwhite;
     }
-    > div {
+
+    div {
       font-size: 80%;
       padding: 5px 8px;
       color: silver;
     }
   }
+
   &:hover > label {
     border: 1px solid plum;
+
     &:after {
       color: plum;
     }
@@ -64,6 +76,6 @@
     margin: 0;
     padding: 0;
     border: none;
-    height: 0.1px;
+    height: .1px;
   }
 }

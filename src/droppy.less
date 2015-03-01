@@ -3,6 +3,7 @@
     box-sizing: border-box;
   }
   display: inline-block;
+  position: relative;
   outline: none;
   label {
     display: block;
@@ -14,11 +15,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  > input:not(:checked) ~ * > .droppy-drop {
+  > input:not(:checked) ~ .droppy-drop {
     max-height: 0;
-  }
-  > div {
-    position: relative;
   }
   .droppy-drop {
     position: absolute;

@@ -54,7 +54,6 @@ DroppyPrototype.render = function () {
     markup = '' +
         '<input id="droppy-' + count + '" class="droppy-hidden" type="checkbox"/>' +
         '<label for="droppy-' + count + '">' + defaultName + '</label>' +
-        '<div>' +
         '<div class="droppy-drop">' +
         '<input type="text" placeholder="type to filter"/>';
 
@@ -74,7 +73,7 @@ DroppyPrototype.render = function () {
             '<label for="droppy-' + count + '" data-index="' + i + '" data-value="' + label.toLowerCase() + '" title="' + label + '">' + label + '</label>';
     }
 
-    markup += '</div></div>';
+    markup += '</div>';
     this.container.innerHTML = markup;
 
     this.select.parentNode.insertBefore(this.container, this.select);

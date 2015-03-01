@@ -6,7 +6,7 @@ The lightest & fastest way to convert a native *non-multiple* `<select>` element
 
 ## Features
 * **Zero dependencies:** who needs jQuery/Prototype/Backbone for a simple dropdown widget?
-* **Ultra-light:** only **1.87kB** gzipped! Droppy's core logic is really small (less that 200 lines).
+* **Ultra-light:** only **2.05kB** gzipped! Droppy's core logic is really small (~200 lines).
 * **JS & basic CSS in the same file:** The minimum CSS rules required for the scaffolding of the widget is pre-included in the `.js` file (an extra CSS theme file needs to be supplied to adjust it to your tastes).
 * **Theming via external file:** no need to overwrite any CSS rule because the look doesn't match your property. Droppy comes with no theme at all. You are free to [create you own](http://codepen.io/caccialdo/pen/zrIxe/?editors=010) or use the default one in the repo.
 * **CSS-powered filtering:** looking for a particular element in your dropdown? You'll be amazed at how fast Droppy handles this task.
@@ -73,7 +73,7 @@ When creating a new droppy, an configuration object can be passed to the constru
 
 | Name | Type | Description | Default value |
 |------|------|-------------|---------------|
-| **maxWidth** | integer | The maximum width in pixels for the dropdown's header. | `150` |
+| **maxWidth** | integer | The maximum width in pixels for the dropdown's header. | `–` |
 | **searchBox** | boolean | Whether or not to display the search box in the dropdown. | `true` |
 | **theme** | string | The name of the theme you would like to use. The widget container will have a class of the same name. | `"default"` |
 

@@ -1,3 +1,5 @@
 node_modules
+tiny-lr.pid
+
 build/droppy.tmp.js
 build/droppy.min.css

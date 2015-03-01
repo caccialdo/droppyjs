@@ -1,1 +1,3 @@
 node_modules
+build/droppy.tmp.js
+build/droppy.min.css

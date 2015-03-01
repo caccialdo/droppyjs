@@ -37,7 +37,7 @@ build/droppy.js: build/droppy.tmp.js
 build/droppy.min.js: build/droppy.tmp.js
 	uglifyjs src/utils.js $< --enclose --preamble "/* $(LICENSE) */" --compress --mangle --screw-ie8 > $@
 
-.PHONY: build develop js theme autoprefixer clean
+.PHONY: build develop js theme autoprefixer clean gzip-size
 
 LIVERELOAD_DIR = ./build
 include ./node_modules/make-livereload/index.mk

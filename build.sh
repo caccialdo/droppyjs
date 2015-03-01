@@ -1,4 +1,5 @@
 #!/bin/sh
+AUTOPREFIXER="node_modules/.bin/autoprefixer"
 LESSC="node_modules/.bin/lessc"
 UGLIFY="node_modules/.bin/uglifyjs"
 LICENSE='Droppy v0.5.0 | (c) 2014 by Arnaud Ceccaldi | MIT License'
@@ -17,6 +18,9 @@ rm -rf build/* build/.* 2> /dev/null
 # Minifies all LESS assets
 $LESSC --clean-css "src/droppy.less" "build/droppy.min.css"
 $LESSC --clean-css "src/theme.less" "build/theme.min.css"
+
+# Prefixes CSS rules
+$AUTOPREFIXER "build/droppy.min.css" "build/theme.min.css"
 
 # Inject droppy.min.css content inside droppy.js
 DROPPY_MIN_CSS=$(cat "build/droppy.min.css")

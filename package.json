@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^5.1.0",
     "less": "1.7.5",
     "uglify-js": "2.4.15",
     "watchy": "0.5.3"

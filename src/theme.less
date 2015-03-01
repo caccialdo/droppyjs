@@ -9,35 +9,19 @@
     border: 1px solid silver;
     border-radius: 2px;
     background: white;
-    -webkit-transition: border 0.1s;
-    -moz-transition: border 0.1s;
-    -ms-transition: border 0.1s;
-    -o-transition: border 0.1s;
-    transition: border 0.1s;
+    transition: border .1s;
     &:before {
       float: right;
       margin-top: 3px;
       margin-right: -10px;
       content: "▲";
       font-size: 7px;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -ms-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s;
-      -webkit-transform-origin: 50% 60% 0;
-      -moz-transform-origin: 50% 60% 0;
-      -ms-transform-origin: 50% 60% 0;
-      -o-transform-origin: 50% 60% 0;
+      transition: all .3s;
       transform-origin: 50% 60% 0;
     }
   }
   > input:checked {
     + label:before {
-      -webkit-transform: rotate(180deg);
-      -moz-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
       transform: rotate(180deg);
     }
   }

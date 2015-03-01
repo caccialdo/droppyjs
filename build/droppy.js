@@ -1,4 +1,4 @@
-/* Droppy v0.5.0 | (c) 2014 by Arnaud Ceccaldi | MIT License */
+/* Droppy v0.5.2 | (c) 2014 by Arnaud Ceccaldi | MIT License */
 (function() {
     function bindEvent(node, type, handler, context) {
         if (context) handler = handler.bind(context);

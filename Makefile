@@ -17,6 +17,9 @@ theme: build/theme.min.css
 clean:
 	rm build/droppy.tmp.js build/droppy.min.css
 
+gzip-size: build/droppy.min.js
+	gzip -c $< | wc -c
+
 build/droppy.min.css: src/droppy.less
 	lessc --clean-css $< $@
 	autoprefixer $@

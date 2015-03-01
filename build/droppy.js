@@ -7,9 +7,9 @@
             detach: node.removeEventListener.bind(node, type, handler)
         };
     }
-    function browserIsNotSupported(navigator) {
+    function isBrowserSupported(navigator) {
         var isIE = navigator.appName === "Microsoft Internet Explorer" && document.documentMode < 9, isIOS = /iP(od|hone)/i.test(navigator.userAgent), isAndroid = /Android/i.test(navigator.userAgent);
-        return isIE || isIOS || isAndroid;
+        return !isIE && !isIOS && !isAndroid;
     }
     function shallowMerge(o1, o2) {
         var o3 = Object.create(o1), key;
@@ -21,16 +21,15 @@
     var count = 0, indexOf = Array.prototype.indexOf, style;
     var Droppy = function Droppy(select, cfg) {
         if (!select) throw new Error("You need to provide a select element to the constructor.");
-        if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
+        if (!isBrowserSupported(window.navigator)) throw new Error("Your browser is not supported.");
         this.select = select;
         cfg = this.cfg = shallowMerge({
-            maxWidth: 150,
             theme: "default",
             searchBox: true
         }, cfg || {});
         if (!style) {
             style = document.createElement("style");
-            style.innerHTML = ".droppy-container{display:inline-block;outline:0}.droppy-container *,.droppy-container :before,.droppy-container :after{box-sizing:border-box}.droppy-container label{display:block;cursor:pointer}.droppy-container>label{box-sizing:content-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.droppy-container>input:not(:checked)~*>.droppy-drop{max-height:0}.droppy-container>div{position:relative}.droppy-container .droppy-drop{position:absolute;overflow:hidden;max-height:9999px}.droppy-container .droppy-drop>input[type=text]{width:calc(90%);border:none;outline:0;margin-left:5px}.droppy-container .droppy-drop>div{cursor:default}.droppy-hidden{display:none;visibility:hidden}";
+            style.innerHTML = ".droppy-container{display:inline-block;position:relative;outline:0}.droppy-container label{display:block;cursor:pointer;white-space:nowrap}.droppy-container>label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.droppy-container>input:not(:checked)~.droppy-drop{max-height:0}.droppy-container .droppy-drop{position:absolute;top:100%;overflow:hidden;max-height:9999px;z-index:1000}.droppy-container .droppy-drop>input[type=text]{box-sizing:border-box;width:calc(100% - 10px);border:none;outline:0;margin-left:5px}.droppy-container .droppy-drop>div{cursor:default}.droppy-hidden{display:none;visibility:hidden}";
             document.head.insertBefore(style, document.head.firstElementChild);
         }
         this.render();
@@ -42,8 +41,11 @@
         this.drop = this.container.querySelector(".droppy-drop");
         this.search = this.drop.querySelector("input[type=text]");
         this.inputs = this.drop.querySelectorAll("input[name^=hovered]");
-        this.label.style.maxWidth = cfg.maxWidth + "px";
-        this.label.style.width = window.getComputedStyle(this.drop).width;
+        if (cfg.maxWidth) {
+            this.label.style.boxSizing = "border-box";
+            this.label.style.maxWidth = cfg.maxWidth + "px";
+        }
+        this.label.style.width = this.drop.offsetWidth + "px";
         this.bind();
         return this;
     };
@@ -54,7 +56,7 @@
         this.container.className = "droppy-container " + this.cfg.theme;
         if (!this.cfg.searchBox) this.container.className += " droppy-nosearch";
         defaultName = this.select.querySelector("option:checked").innerHTML;
-        markup = "" + '<input id="droppy-' + count + '" class="droppy-hidden" type="checkbox"/>' + '<label for="droppy-' + count + '">' + defaultName + "</label>" + "<div>" + '<div class="droppy-drop">' + '<input type="text" placeholder="type to filter"/>';
+        markup = "" + '<input id="droppy-' + count + '" class="droppy-hidden" type="checkbox"/>' + '<label for="droppy-' + count + '">' + defaultName + "</label>" + '<div class="droppy-drop">' + '<input type="text" placeholder="type to filter"/>';
         for (i = 0; i < options.length; i++) {
             label = options[i].innerHTML;
             checked = options[i].selected ? " checked" : "";
@@ -65,7 +67,7 @@
             }
             markup += "" + '<input type="radio" name="selected-' + count + '" class="droppy-hidden"' + checked + "/>" + '<input type="radio" name="hovered-' + count + '" class="droppy-hidden" data-value="' + label.toLowerCase() + '"' + checked + "/>" + '<label for="droppy-' + count + '" data-index="' + i + '" data-value="' + label.toLowerCase() + '" title="' + label + '">' + label + "</label>";
         }
-        markup += "</div></div>";
+        markup += "</div>";
         this.container.innerHTML = markup;
         this.select.parentNode.insertBefore(this.container, this.select);
         this.select.classList.add("droppy-hidden");

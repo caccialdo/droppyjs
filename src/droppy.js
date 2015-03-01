@@ -8,7 +8,6 @@ var Droppy = function Droppy (select, cfg) {
     this.select = select;
 
     cfg = this.cfg = shallowMerge({
-        maxWidth: 150,
         theme: "default",
         searchBox: true
     }, cfg || {});
@@ -31,8 +30,12 @@ var Droppy = function Droppy (select, cfg) {
     this.search = this.drop.querySelector("input[type=text]");
     this.inputs = this.drop.querySelectorAll("input[name^=hovered]");
 
-    this.label.style.maxWidth = cfg.maxWidth + "px";
-    this.label.style.width = window.getComputedStyle(this.drop).width;
+    if (cfg.maxWidth) {
+        this.label.style.boxSizing = "border-box";
+        this.label.style.maxWidth = cfg.maxWidth + "px";
+    }
+
+    this.label.style.width = this.drop.offsetWidth + "px";
 
     this.bind();
 

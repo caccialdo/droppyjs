@@ -1,3 +1,5 @@
+![](http://i.imgur.com/h8Tr6Vk.png)
+
 <img src="http://i1131.photobucket.com/albums/m542/swolf318/Miscellaneous/DroopyCartoonVector2-500x500_zps577024c8.jpg" height="150"/>
 
 # Dro(o)ppy.js
